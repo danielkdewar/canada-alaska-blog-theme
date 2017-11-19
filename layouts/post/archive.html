@@ -1,7 +1,18 @@
-               <div class="post-preview">
-                  <p class="post-meta"><a href="{{ .Permalink }}">{{ .Title }}</a> on {{ dateFormat .Site.Params.DateForm .Date }}
-                    <br />
-                    {{ partial "categories.html" .}}
-                    {{ partial "tags.html" .}}
-                  </p>
-               </div>
+<div class="post-preview">
+  <a href="{{ .Permalink }}">
+       <h2 class="post-title">{{ .Title }}</h2>
+       <h3 class="post-subtitle">{{ .Description }}</h3>
+       <p class="post-summary">{{ .Summary }}</p>
+       {{ if .Truncated }}
+<!-- This <div> includes a read more link, but only if the summary is truncated... -->
+<div>
+<p><a href="{{ .RelPermalink }}">Read More…</a></p>
+</div>
+{{ end }}
+</article>
+     </a>
+     <p class="post-meta">
+       {{ partial "meta.html" .}}
+   </p>
+ </div>
+ <hr>
